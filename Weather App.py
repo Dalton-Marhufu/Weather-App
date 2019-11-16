@@ -4,10 +4,6 @@ import requests
 HEIGHT = 200
 WIDTH = 300
 
-#test function
-def test_function(entry):
-	print('Enter City', entry)
-
 # apikey Your apikey   api.openweathermap.org/data/2.5/forecast?
 
 # organisied responce from weather api with exception handeling
@@ -33,9 +29,7 @@ def get_weather(city):
 
 # tkinter app	
 root = tkinter.Tk()
-
 root.title('WEATHER APP')
-
 canvas = tkinter.Canvas(root, height=HEIGHT, width=WIDTH,)
 
 top_frame = tkinter.Frame(root)
@@ -51,5 +45,4 @@ label = tkinter.Label(top_frame,text='WEATHER APP', font=50)
 label.pack()
 
 canvas.pack()
-
 root.mainloop()
