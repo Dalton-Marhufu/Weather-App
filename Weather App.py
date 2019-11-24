@@ -1,10 +1,8 @@
 import tkinter
 import requests
 
-HEIGHT = 200
-WIDTH = 300
 
-# apikey Your apikey   api.openweathermap.org/data/2.5/forecast?
+# apikey "Your API key"   api.openweathermap.org/data/2.5/forecast?
 
 # organisied responce from weather api with exception handeling
 def format_response(weather):
@@ -20,7 +18,7 @@ def format_response(weather):
 
 # weather api function
 def get_weather(city):
-	weather_key = 'Your apikey'
+	weather_key = 'Your API key here'
 	url = 'http://api.openweathermap.org/data/2.5/weather?'
 	params = {'APPID': weather_key, 'q': city, 'units': 'metric'}
 	response = requests.get(url, params=params)
@@ -29,20 +27,22 @@ def get_weather(city):
 
 # tkinter app	
 root = tkinter.Tk()
+
 root.title('WEATHER APP')
-canvas = tkinter.Canvas(root, height=HEIGHT, width=WIDTH,)
+root.geometry('300x300')
+root.iconbitmap('apppic.jpg')
 
 top_frame = tkinter.Frame(root)
-top_frame.pack(side = 'top')
+top_frame.pack(side ='top')
 
-entry = tkinter.Entry(top_frame, bg='silver', width =15, font=50, justify='center')
+entry = tkinter.Entry(top_frame, bg='silver', width =17, font=150, justify='center', borderwidth=5)
 entry.pack(side ='top')
+entry.insert(0, "Enter City")
 
-button = tkinter.Button(top_frame, text='Get Weather', font=50, command=lambda: get_weather(entry.get()))
+button = tkinter.Button(top_frame, text='Get Weather', font=50, bg='#60edfc', command=lambda: get_weather(entry.get()))
 button.pack()
 
-label = tkinter.Label(top_frame,text='WEATHER APP', font=50)
+label = tkinter.Label(top_frame,text='WEATHER APP', font=50, pady=50, fg='#002e85')
 label.pack()
 
-canvas.pack()
 root.mainloop()
